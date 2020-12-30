@@ -1,0 +1,32 @@
+<app-header></app-header>
+<br><br><br>
+<div class="container">
+
+  <a routerLink="Add" class="btn btn-primary">Add new</a>
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Price</th>
+        <th scope="col">Company</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of Products">
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.ageRestriction}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.company}}</td>
+        <td>
+          <a routerLink="Edit/{{item.id}}" class="btn btn-success">Update</a>
+          <button (click)="delete(item)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<app-footer></app-footer>

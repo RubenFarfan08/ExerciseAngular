@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="card shadow-lg border-0 rounded-lg mt-5">
+    <div class="card-header">
+      <h3 class="text-center font-weight-light my-4">{{title}}</h3>
+    </div>
+    <div class="card-body">
+        <form class="needs-validation" [formGroup]="form" (ngSubmit)="submitForm()">
+            <div class="form-group">
+              <label class="small mb-1" for="inputName">Name</label>
+              <input class="form-control py-4" formControlName="name" id="inputName" type="text" placeholder="Enter a name of product" />
+            </div>
+            <div class="small mb-1" >
+              <strong *ngIf="name.errors?.required">Name of product is required</strong>
+              <strong *ngIf="name.errors?.maxLength">Name of product lenght must be less than or equal to 50 </strong>
+            </div>
+            <div class="form-group">
+              <label class="small mb-1" for="inputPrice">Price</label>
+              <input class="form-control py-4"  formControlName="price" id="inputPrice" type="number" placeholder="Enter a price of product" />
+            </div>
+            <div class="small mb-1" >
+              <strong *ngIf="price.errors?.required">Price is required</strong>
+              <strong *ngIf="price.errors?.min">The minimum price must be greater than or equal to 1. </strong>
+              <strong *ngIf="price.errors?.max">The maximum price must be less than or equal to 1000. </strong>
+            </div>
+            <div class="form-group">
+              <label class="small mb-1" for="inputCompany">Company</label>
+              <input class="form-control py-4"  formControlName="company" id="inputCompany" type="text" placeholder="Enter a name of product" />
+            </div>
+            <div class="small mb-1" >
+              <strong *ngIf="company.errors?.required">Company is required</strong>
+              <strong *ngIf="company.errors?.maxLength">Company lenght must be less than or equal to 50 </strong>
+            </div>
+            <div class="form-group">
+              <label class="small mb-1" for="inputAge">Age Restriction</label>
+              <input class="form-control py-4"  formControlName="age" id="inputAge" type="number" placeholder="Enter age restriction of product" />
+            </div>
+            <div class="small mb-1" >
+              <strong *ngIf="age.errors?.required">Age Restriction is required</strong>
+              <strong *ngIf="age.errors?.min">The minimum Age Restriction must be greater than or equal to 0. </strong>
+              <strong *ngIf="age.errors?.max">The maximum Age Restriction must be less than or equal to 100. </strong>
+            </div>
+            <div class="form-group">
+              <label class="small mb-1" for="inputDescription">Description</label>
+              <textarea class="form-control" maxlength="100" formControlName="description" id="inputDescription" rows="3" placeholder="Enter a description of product"></textarea>
+            </div>
+            <div class="small mb-1" >
+              <strong *ngIf="description.errors?.maxLength">description lenght must be less than or equal to 100 </strong>
+              <strong *ngIf="description.errors?.required">description is required</strong>
+            </div>
+
+            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+              <button type="submit" class="btn btn-primary" [disabled]="form.invalid" >Save</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
